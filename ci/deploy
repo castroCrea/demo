@@ -60,17 +60,17 @@ echo "Installing/upgrading release '${RELEASE}' on namespace '${NAMESPACE}'"
 helm upgrade --install --reset-values --force --namespace=$NAMESPACE --recreate-pods $RELEASE ./api/helm/api \
     --set php.corsAllowOrigin=$CORS_ALLOW_ORIGIN \
     --set php.trustedHosts=$TRUSTED_HOSTS \
-    --set php.repository=$PHP_REPOSITORY,php.tag=$TAG \
+    --set php.image.repository=$PHP_REPOSITORY,php.image.tag=$TAG \
     --set php.mercure.jwtSecret=$MERCURE_JWT_SECRET \
     --set php.jwt.secretKey="$JWT_SECRET_KEY" \
     --set php.jwt.publicKey="$JWT_PUBLIC_KEY" \
     --set php.jwt.passphrase="$JWT_PASSPHRASE" \
     --set php.apiEntrypointHost=$API_ENTRYPOINT \
-    --set nginx.repository=$NGINX_REPOSITORY,nginx.tag=$TAG \
-    --set varnish.repository=$VARNISH_REPOSITORY,varnish.tag=$TAG \
-    --set blackfire.blackfire.server_id=$BLACKFIRE_SERVER_ID \
-    --set blackfire.blackfire.server_token=$BLACKFIRE_SERVER_TOKEN \
-    --set blackfire.blackfire.enabled=$BLACKFIRE_ENABLED \
+    --set nginx.image.repository=$NGINX_REPOSITORY,nginx.image.tag=$TAG \
+    --set varnish.image.repository=$VARNISH_REPOSITORY,varnish.image.tag=$TAG \
+    --set blackfire.server_id=$BLACKFIRE_SERVER_ID \
+    --set blackfire.server_token=$BLACKFIRE_SERVER_TOKEN \
+    --set blackfire.enabled=$BLACKFIRE_ENABLED \
     --set postgresql.postgresqlPassword=$DATABASE_PASSWORD \
     --set ingress.hosts.api.host=$API_ENTRYPOINT \
     --set ingress.hosts.mercure.host=$MERCURE_ENTRYPOINT \
